@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artistry Online Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    /* PERPLEXITY DESIGN SYSTEM */
+    :root {
+      --color-white: rgba(255, 255, 255, 1);
+      --color-black: rgba(0, 0, 0, 1);
+      --color-cream-50: rgba(252, 252, 249, 1);
+      --color-cream-100: rgba(255, 255, 253, 1);
+      --color-gray-200: rgba(245, 245, 245, 1);
+      --color-gray-300: rgba(167, 169, 169, 1);
+      --color-gray-400: rgba(119, 124, 124, 1);
+      --color-slate-500: rgba(98, 108, 113, 1);
+      --color-brown-600: rgba(94, 82, 64, 1);
+      --color-charcoal-700: rgba(31, 33, 33, 1);
+      --color-charcoal-800: rgba(38, 40, 40, 1);
+      --color-slate-900: rgba(19, 52, 59, 1);
+      --color-teal-300: rgba(50, 184, 198, 1);
+      --color-teal-400: rgba(45, 166, 178, 1);
+      --color-teal-500: rgba(33, 128, 141, 1);
+      --color-teal-600: rgba(29, 116, 128, 1);
+      --color-teal-700: rgba(26, 104, 115, 1);
+      --color-teal-800: rgba(41, 150, 161, 1);
+      --color-red-400: rgba(255, 84, 89, 1);
+      --color-red-500: rgba(192, 21, 47, 1);
+      --color-orange-400: rgba(230, 129, 97, 1);
+      --color-orange-500: rgba(168, 75, 47, 1);
+      --color-brown-600-rgb: 94, 82, 64;
+      --color-teal-500-rgb: 33, 128, 141;
+      --color-slate-900-rgb: 19, 52, 59;
+      --color-slate-500-rgb: 98, 108, 113;
+      --color-red-500-rgb: 192, 21, 47;
+      --color-red-400-rgb: 255, 84, 89;
+      --color-orange-500-rgb: 168, 75, 47;
+      --color-orange-400-rgb: 230, 129, 97;
+      --color-bg-1: rgba(59, 130, 246, 0.08);
+      --color-bg-2: rgba(245, 158, 11, 0.08);
+      --color-bg-3: rgba(34, 197, 94, 0.08);
+      --color-bg-4: rgba(239, 68, 68, 0.08);
+      --color-bg-5: rgba(147, 51, 234, 0.08);
+      --color-bg-6: rgba(249, 115, 22, 0.08);
+      --color-bg-7: rgba(236, 72, 153, 0.08);
+      --color-bg-8: rgba(6, 182, 212, 0.08);
+      --color-background: var(--color-cream-50);
+      --color-surface: var(--color-cream-100);
+      --color-text: var(--color-slate-900);
+      --color-text-secondary: var(--color-slate-500);
+      --color-primary: var(--color-teal-500);
+      --color-primary-hover: var(--color-teal-600);
+      --color-primary-active: var(--color-teal-700);
+      --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+      --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+      --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+      --color-btn-primary-text: var(--color-cream-50);
+      --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-error: var(--color-red-500);
+      --color-success: var(--color-teal-500);
+      --color-warning: var(--color-orange-500);
+      --color-info: var(--color-slate-500);
+      --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+      --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+      --focus-ring: 0 0 0 3px var(--color-focus-ring);
+      --focus-outline: 2px solid var(--color-primary);
+      --status-bg-opacity: 0.15;
+      --status-border-opacity: 0.25;
+      --color-success-rgb: 33, 128, 141;
+      --color-error-rgb: 192, 21, 47;
+      --color-warning-rgb: 168, 75, 47;
+      --color-info-rgb: 98, 108, 113;
+      --font-family-base: 'FKGroteskNeue', 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-family-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-size-xs: 11px;
+      --font-size-sm: 12px;
+      --font-size-base: 14px;
+      --font-size-md: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 20px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 30px;
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 550;
+      --font-weight-bold: 600;
+      --line-height-tight: 1.2;
+      --line-height-normal: 1.5;
+      --letter-spacing-tight: -0.01em;
+      --space-0: 0;
+      --space-1: 1px;
+      --space-2: 2px;
+      --space-4: 4px;
+      --space-6: 6px;
+      --space-8: 8px;
+      --space-10: 10px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --radius-sm: 6px;
+      --radius-base: 8px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+      --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+      --duration-fast: 150ms;
+      --duration-normal: 250ms;
+      --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+      --container-sm: 640px;
+      --container-md: 768px;
+      --container-lg: 1024px;
+      --container-xl: 1280px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-gray-400-rgb: 119, 124, 124;
+        --color-teal-300-rgb: 50, 184, 198;
+        --color-gray-300-rgb: 167, 169, 169;
+        --color-gray-200-rgb: 245, 245, 245;
+        --color-bg-1: rgba(29, 78, 216, 0.15);
+        --color-bg-2: rgba(180, 83, 9, 0.15);
+        --color-bg-3: rgba(21, 128, 61, 0.15);
+        --color-bg-4: rgba(185, 28, 28, 0.15);
+        --color-bg-5: rgba(107, 33, 168, 0.15);
+        --color-bg-6: rgba(194, 65, 12, 0.15);
+        --color-bg-7: rgba(190, 24, 93, 0.15);
+        --color-bg-8: rgba(8, 145, 178, 0.15);
+        --color-background: var(--color-charcoal-700);
+        --color-surface: var(--color-charcoal-800);
+        --color-text: var(--color-gray-200);
+        --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+        --color-primary: var(--color-teal-300);
+        --color-primary-hover: var(--color-teal-400);
+        --color-primary-active: var(--color-teal-800);
+        --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+        --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+        --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-error: var(--color-red-400);
+        --color-success: var(--color-teal-300);
+        --color-warning: var(--color-orange-400);
+        --color-info: var(--color-gray-300);
+        --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+        --color-btn-primary-text: var(--color-slate-900);
+        --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+        --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+        --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+        --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+        --color-success-rgb: var(--color-teal-300-rgb);
+        --color-error-rgb: var(--color-red-400-rgb);
+        --color-warning-rgb: var(--color-orange-400-rgb);
+        --color-info-rgb: var(--color-gray-300-rgb);
+      }
+    }
+    @font-face {
+      font-family: 'FKGroteskNeue';
+      src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+    }
+    * { box-sizing: border-box; }
+    html {
+      font-size: var(--font-size-base);
+      font-family: var(--font-family-base);
+      line-height: var(--line-height-normal);
+      color: var(--color-text);
+      background-color: var(--color-background);
+      -webkit-font-smoothing: antialiased;
+    }
+    /* END PERPLEXITY DESIGN SYSTEM */
+
+    body {
+      background: var(--color-background);
+      font-family: var(--font-family-base);
+      color: var(--color-text);
+      min-height: 100vh;
+    }
+    .art-logo {
+      font-family: 'FKGroteskNeue', serif;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+    }
+    .navbar {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--space-20);
+    }
+    .gallery-hero {
+      background: var(--color-bg-3);
+      padding: var(--space-32);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-24);
+      text-align: center;
+    }
+    .art-card, .art-list-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+      transition: box-shadow .2s;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .art-card:hover, .art-list-item:hover { box-shadow: var(--shadow-md); }
+    .art-thumb {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .art-list-thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--radius-base);
+    }
+    .art-detail-img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: var(--space-24);
+    }
+    .art-detail-meta { font-size: var(--font-size-lg); margin: var(--space-16) 0; }
+    .art-category {
+      background: var(--color-bg-6);
+      padding: var(--space-4) var(--space-12);
+      border-radius: var(--radius-full);
+      color: var(--color-warning);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      display: inline-block;
+    }
+    .similar-piece-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-base);
+      padding: var(--space-8);
+      margin-right: var(--space-16);
+      display: inline-flex;
+      align-items: center;
+      transition: box-shadow .1s;
+      min-width: 190px;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+    }
+    .similar-piece-card:hover {
+      box-shadow: var(--shadow-sm);
+      background: var(--color-bg-3);
+    }
+    .similar-thumb {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: var(--radius-base);
+      margin-right: var(--space-8);
+    }
+    .form-section {
+      max-width: 380px;
+      margin: var(--space-32) auto;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: var(--space-32);
+    }
+    .form-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      text-align: center;
+      color: var(--color-primary);
+      margin-bottom: var(--space-24);
+    }
+    .trans-fade {
+      transition: opacity .3s ease; opacity: 1;
+    }
+    .hidden { display: none !important; }
+    .show { display: block !important; }
+    .error-message {
+      color: var(--color-error);
+      font-size: var(--font-size-sm);
+      margin: var(--space-8) 0;
+    }
+    .btn-art {
+      background: var(--color-primary);
+      color: var(--color-btn-primary-text);
+      border-radius: var(--radius-base);
+      transition: background .2s;
+      font-weight: 500;
+    }
+    .btn-art:hover { background: var(--color-primary-hover); }
+    .nav-link.active {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary) !important;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .gallery-hero { padding: var(--space-16); }
+      .form-section { padding: var(--space-16); }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION BAR (Shown only after login) -->
+  <nav id="navbar" class="navbar navbar-expand-lg py-3 px-4 hidden">
+    <div class="container-fluid">
+      <span class="art-logo">Artistry Gallery</span>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="nav-links">
+        <li class="nav-item"><a class="nav-link" href="#home" id="navHome">Gallery Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#display" id="navDisplay">Art Display</a></li>
+        <li class="nav-item"><button class="btn btn-sm btn-outline-danger ms-4" id="navLogout">Logout</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- LOGIN PAGE -->
+  <section id="loginSection" class="form-section">
+    <div class="form-title">Log In</div>
+    <form id="loginForm" autocomplete="off">
+      <div class="form-group mb-3">
+        <label class="form-label" for="loginEmail">Email</label>
+        <input type="email" class="form-control" id="loginEmail" required>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="loginPassword">Password</label>
+        <input type="password" class="form-control" id="loginPassword" required>
+      </div>
+      <div id="loginError" class="error-message hidden"></div>
+      <button type="submit" class="btn btn-art w-100 mb-3">Login</button>
+      <div class="text-center">
+        <a id="toSignUp" href="#signup">Don't have an account? Sign Up</a>
+      </div>
+    </form>
+  </section>
+
+  <!-- SIGN UP PAGE -->
+  <section id="signupSection" class="form-section hidden">
+    <div class="form-title">Sign Up</div>
+    <form id="signupForm" autocomplete="off">
+      <div class="form-group mb-3">
+        <label class="form-label" for="signupName">Full Name</label>
+        <input type="text" class="form-control" id="signupName" required>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="signupEmail">Email</label>
+        <input type="email" class="form-control" id="signupEmail" required>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="signupPassword">Password</label>
+        <input type="password" class="form-control" id="signupPassword" required>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="signupConfirm">Confirm Password</label>
+        <input type="password" class="form-control" id="signupConfirm" required>
+      </div>
+      <div id="signupError" class="error-message hidden"></div>
+      <button type="submit" class="btn btn-art w-100 mb-3">Sign Up</button>
+      <div class="text-center">
+        <a id="toLogin" href="#login">Already have an account? Log In</a>
+      </div>
+    </form>
+  </section>
+
+  <!-- GALLERY HOME PAGE -->
+  <main id="galleryHome" class="container hidden">
+    <div class="gallery-hero">
+      <h1>Welcome to Artistry Gallery</h1>
+      <p>The Artistry Online Gallery brings together masterpieces of the Renaissance and Impressionism, letting each work shine in its own story. Explore history's greatest artworks in a beautiful, immersive setting. Click on any piece to discover its secrets, find related works, and journey through art history!</p>
+    </div>
+    <h2 class="my-8">Gallery Preview</h2>
+    <div id="galleryGrid" class="row gx-4 gy-4 pb-4"></div>
+  </main>
+
+  <!-- ART DISPLAY LIST VIEW -->
+  <main id="artDisplay" class="container hidden">
+    <h2 class="mb-4">Art Collection</h2>
+    <div id="artList" class="row gx-4 gy-4"></div>
+  </main>
+
+  <!-- INDIVIDUAL ART PIECE PAGES -->
+  <section id="artDetailSection" class="container hidden">
+    <!-- Art details dynamically injected here -->
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // --- APP DATA ---
+    const artPieces = [
+      {
+        id: 1,
+        title: "Mona Lisa",
+        artist: "Leonardo da Vinci",
+        year: 1503,
+        category: "Renaissance",
+        description: "The Mona Lisa is one of the most recognizable paintings in the world. Created by Leonardo da Vinci between 1503-1506, this masterpiece showcases the artist's mastery of sfumato technique and revolutionary portraiture. The subject's enigmatic smile has captivated viewers for centuries, making it an enduring icon of Renaissance art. The painting demonstrates da Vinci's deep understanding of human anatomy, light, and atmospheric perspective. It currently resides in the Louvre Museum in Paris, where it attracts millions of visitors annually.",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+        similar_pieces: [2, 3]
+      },
+      {
+        id: 2,
+        title: "The Last Supper",
+        artist: "Leonardo da Vinci",
+        year: 1498,
+        category: "Renaissance",
+        description: "The Last Supper is a monumental fresco painted by Leonardo da Vinci between 1495 and 1498. This iconic work depicts Jesus Christ's final meal with his apostles before his crucifixion. Da Vinci's composition revolutionized religious art through its dramatic use of perspective and the psychological depth given to each figure. The painting captures the moment when Jesus announces that one of his disciples will betray him, creating a powerful narrative tension. Located in the Convent of Santa Maria delle Grazie in Milan, this masterpiece remains one of the most studied and replicated works in art history.",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Da_Vinci_5.jpg/1920px-%C3%9Altima_Cena_-_Da_Vinci_5.jpg",
+        similar_pieces: [1, 3]
+      },
+      {
+        id: 3,
+        title: "The School of Athens",
+        artist: "Raphael",
+        year: 1511,
+        category: "Renaissance",
+        description: "The School of Athens is one of the most famous frescoes by the Italian Renaissance artist Raphael. Painted between 1509-1511, it represents philosophy and showcases the greatest mathematicians, philosophers and scientists from classical antiquity. The fresco features Plato and Aristotle at its center, surrounded by other luminaries including Socrates, Pythagoras, and Euclid. Raphael's mastery of perspective creates an architectural space that draws the viewer into the scene. The work epitomizes the Renaissance ideals of humanism and the revival of classical learning. It adorns the Apostolic Palace in the Vatican.",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Raphael_School_of_Athens.jpg/1920px-Raphael_School_of_Athens.jpg",
+        similar_pieces: [1, 2]
+      },
+      {
+        id: 4,
+        title: "Impression, Sunrise",
+        artist: "Claude Monet",
+        year: 1872,
+        category: "Impressionism",
+        description: "Impression, Sunrise is the painting that gave the Impressionist movement its name. Created by Claude Monet in 1872, this artwork depicts the port of Le Havre in France at sunrise. Monet's loose brushwork and emphasis on light and color over detail marked a radical departure from academic painting traditions. The painting captures a fleeting moment, with the sun's reflection shimmering on the water through the morning mist. Critics initially derided the work, with one mockingly using the term 'Impressionist' based on the painting's title, but the name stuck and became synonymous with this revolutionary art movement.",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1920px-Monet_-_Impression%2C_Sunrise.jpg",
+        similar_pieces: [5, 2]
+      },
+      {
+        id: 5,
+        title: "Water Lilies",
+        artist: "Claude Monet",
+        year: 1916,
+        category: "Impressionism",
+        description: "Water Lilies is part of a series of approximately 250 oil paintings created by Claude Monet during the last three decades of his life. These works depict Monet's flower garden at his home in Giverny and represent the pinnacle of his exploration of light, color, and reflection. The paintings show water lilies floating on a pond, with reflections of the sky and surrounding vegetation creating an almost abstract composition. Monet's dedication to capturing the changing effects of light at different times of day and in different seasons resulted in multiple variations of this subject. These works bridge Impressionism and modern abstract art, influencing generations of artists.",
+        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/1920px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg",
+        similar_pieces: [4, 1]
+      },
+    ];
+
+    // --- APP STATE ---
+    let currentUser = null; // {name, email, password}
+    let registeredUsers = [];
+    let authenticated = false;
+    let currentArtId = null;
+
+    // SECTION HANDLING
+    const sections = {
+      login: document.getElementById('loginSection'),
+      signup: document.getElementById('signupSection'),
+      home: document.getElementById('galleryHome'),
+      display: document.getElementById('artDisplay'),
+      detail: document.getElementById('artDetailSection'),
+    };
+    const navbar = document.getElementById('navbar');
+
+    function showSection(key) {
+      for (const k in sections) {
+        sections[k].classList.add('hidden');
+      }
+      if (key === 'login' || key === 'signup') {
+        navbar.classList.add('hidden');
+      } else {
+        navbar.classList.remove('hidden');
+      }
+      sections[key].classList.remove('hidden');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    // --- AUTH NAVIGATION ---
+    function setNavActive(page) {
+      document.getElementById('navHome').classList.remove('active');
+      document.getElementById('navDisplay').classList.remove('active');
+      if(page==='home') document.getElementById('navHome').classList.add('active');
+      if(page==='display') document.getElementById('navDisplay').classList.add('active');
+    }
+
+    // --- LOGIN/LOGOUT/REGISTER ---
+    document.getElementById('loginForm').onsubmit = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const pwd = document.getElementById('loginPassword').value.trim();
+      const errorDiv = document.getElementById('loginError');
+      errorDiv.classList.add('hidden');
+      if(!email || !pwd) {
+        errorDiv.textContent = "Please fill in all fields.";
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+      const user = registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === pwd);
+      if(user) {
+        authenticated = true;
+        currentUser = user;
+        goToHash('home');
+      } else {
+        errorDiv.textContent = "Invalid credentials. Sign up if you don't have an account.";
+        errorDiv.classList.remove('hidden');
+      }
+    };
+    document.getElementById('signupForm').onsubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const pwd = document.getElementById('signupPassword').value.trim();
+      const conf = document.getElementById('signupConfirm').value.trim();
+      const errorDiv = document.getElementById('signupError');
+      errorDiv.classList.add('hidden');
+      if(!name || !email || !pwd || !conf) {
+        errorDiv.textContent = "Please fill in all fields.";
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+      if(pwd !== conf) {
+        errorDiv.textContent = "Passwords do not match.";
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+      if(registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+        errorDiv.textContent = "Email is already registered.";
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+      registeredUsers.push({name, email, password:pwd});
+      alert("Sign up successful! Please log in.");
+      goToHash('login');
+    };
+    document.getElementById('navLogout').onclick = function(){
+      authenticated = false;
+      currentUser = null;
+      goToHash('login');
+    };
+    document.getElementById('toSignUp').onclick = function(e){ e.preventDefault(); goToHash('signup'); };
+    document.getElementById('toLogin').onclick = function(e){ e.preventDefault(); goToHash('login'); };
+    // --- NAVIGATION LINKS ---
+    document.getElementById('navHome').onclick = function(e){ e.preventDefault(); goToHash('home'); };
+    document.getElementById('navDisplay').onclick = function(e){ e.preventDefault(); goToHash('display'); };
+
+    // --- ROUTING ---
+    function goToHash(page, detailId) {
+      if(page==='login') {
+        showSection('login'); window.location.hash='login'; }
+      else if(page==='signup') {
+        showSection('signup'); window.location.hash='signup'; }
+      else if(!authenticated) {
+        showSection('login'); window.location.hash='login'; }
+      else if(page==='home') {
+        renderGalleryHome(); showSection('home'); setNavActive('home'); window.location.hash='home'; }
+      else if(page==='display') {
+        renderArtDisplay(); showSection('display'); setNavActive('display'); window.location.hash='display'; }
+      else if(page==='detail' && detailId) {
+        renderArtDetail(detailId); showSection('detail'); setNavActive(''); window.location.hash=`detail-${detailId}`; currentArtId = detailId;
+      }
+    }
+    window.addEventListener('hashchange', function() {
+      handleHashChange();
+    });
+    function handleHashChange() {
+      const hash = window.location.hash.replace('#','');
+      if(hash.startsWith('detail-')) {
+        const aid = parseInt(hash.split('-')[1],10);
+        goToHash('detail', aid);
+      } else if(['home','display','login','signup'].includes(hash)) {
+        goToHash(hash);
+      } else {
+        goToHash(authenticated?'home':'login');
+      }
+    }
+    // --- GALLERY HOME GRID ---
+    function renderGalleryHome() {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+      artPieces.forEach(piece => {
+        const col = document.createElement('div');
+        col.className='col-12 col-sm-6 col-md-4 col-lg-3';
+        col.innerHTML = `
+          <div class="art-card h-100" data-id="${piece.id}">
+            <img src="${piece.image_url}" class="art-thumb" alt="${piece.title}">
+            <div class="p-3">
+              <div class="fw-semibold mb-1">${escapeHtml(piece.title)}</div>
+              <div class="text-secondary mb-0" style="font-size:var(--font-size-sm)">${escapeHtml(piece.artist)}</div>
+            </div>
+          </div>
+        `;
+        col.querySelector('.art-card').onclick = function(){ goToHash('detail', piece.id); };
+        grid.appendChild(col);
+      });
+    }
+    // --- ART DISPLAY LIST VIEW ---
+    function renderArtDisplay() {
+      const list = document.getElementById('artList');
+      list.innerHTML = '';
+      artPieces.forEach(piece => {
+        const col = document.createElement('div');
+        col.className='col-12 col-md-6';
+        col.innerHTML = `
+          <div class="art-list-item d-flex align-items-center p-3 mb-2" data-id="${piece.id}">
+            <img src="${piece.image_url}" class="art-list-thumb me-3" alt="${piece.title}">
+            <div class="flex-fill">
+              <div class="fw-semibold">${escapeHtml(piece.title)}</div>
+              <div class="text-secondary" style="font-size:var(--font-size-sm)">${escapeHtml(piece.artist)}</div>
+            </div>
+            <button class="btn btn-art ms-3 view-detail-btn">View Details</button>
+          </div>
+        `;
+        col.querySelector('.art-list-item').onclick = function(){ goToHash('detail', piece.id); };
+        col.querySelector('.view-detail-btn').onclick = function(e){ e.stopPropagation(); goToHash('detail', piece.id); };
+        list.appendChild(col);
+      });
+    }
+    // --- ART DETAIL PAGE ---
+    function renderArtDetail(artId) {
+      const piece = artPieces.find(p=>p.id===Number(artId));
+      const section = document.getElementById('artDetailSection');
+      if(!piece) { section.innerHTML="<p>Art piece not found.</p>"; return; }
+      section.innerHTML = `
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-6 text-center">
+            <img src="${piece.image_url}" class="art-detail-img" alt="${escapeHtml(piece.title)}">
+          </div>
+          <div class="col-12 col-lg-6">
+            <h2>${escapeHtml(piece.title)}</h2>
+            <div class="art-detail-meta mb-2">${escapeHtml(piece.artist)}, ${piece.year}</div>
+            <div class="art-category my-2">${escapeHtml(piece.category)}</div>
+          </div>
+        </div>
+        <div class="mt-4 mb-3">
+          <p>${escapeHtml(piece.description.split(/\n|\./).slice(0,2).join('. '))}.</p>
+          <p>${escapeHtml(piece.description.split(/\n|\./).slice(2).join('. '))}</p>
+        </div>
+        <div class="my-4">
+          <h4 class="mb-3">Similar Art Pieces</h4>
+          <div id="similarPieces" class="d-flex flex-row"></div>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-secondary" id="backToGallery">Back to Gallery</button>
+        </div>
+      `;
+      // Similar pieces
+      const simWrap = section.querySelector('#similarPieces');
+      piece.similar_pieces.forEach(simId => {
+        const sim = artPieces.find(p=>p.id===simId);
+        if(sim) {
+          const card = document.createElement('div');
+          card.className = 'similar-piece-card me-2';
+          card.innerHTML = `<img src="${sim.image_url}" class="similar-thumb" alt="${escapeHtml(sim.title)}"><div><div class="fw-semibold mb-1">${escapeHtml(sim.title)}</div><div style="font-size:var(--font-size-sm)">${escapeHtml(sim.artist)}</div></div>`;
+          card.onclick = ()=>{ goToHash('detail', sim.id); };
+          simWrap.appendChild(card);
+        }
+      });
+      section.querySelector('#backToGallery').onclick = function(){ goToHash('home'); };
+    }
+    // --- ESCAPING HTML ENTITIES ---
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    // --- APP INIT ---
+    function initialLoad() {
+      handleHashChange();
+    }
+    window.onload = initialLoad;
+  </script>
+</body>
+</html>
